@@ -49,6 +49,11 @@ app.add_middleware(
 # -----------------------
 # Load model & class indices
 # -----------------------
+
+@app.get("/")
+def root():
+    return {"message": "API is running"}
+
 MODEL_PATH = "best_resnet_model.h5"
 model = tf.keras.models.load_model(MODEL_PATH, compile=False)
 
@@ -81,7 +86,7 @@ async def predict(file: UploadFile = File(...)):
 
     # Predict class
     preds = model.predict(img_array)
-    class_idx = int(np.argmax(preds[0]))  # <-- use np.argmax here
+    class_idx = int(np.argmax(preds[0]))  # <--  np.argmax 
     label = CLASS_NAMES[class_idx]
     confidence = float(preds[0][class_idx])
 
