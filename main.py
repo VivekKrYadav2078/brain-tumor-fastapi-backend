@@ -42,7 +42,7 @@ from fastapi.middleware.cors import CORSMiddleware
 app = FastAPI()
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:3000"],  # Next.js URL
+    allow_origins=["http://localhost:3000","https://brainsightai.vercel.app/"],  # Next.js URL
     allow_methods=["*"],
     allow_headers=["*"],
 )
